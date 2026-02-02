@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #51e0eb, #116d7e);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        width: 320px;
+    }
+
+    h1 {
+        color: #ff002f;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    #yesBtn {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    #noBtn {
+        background: #ccc;
+        position: absolute;
+    }
+
+    img {
+        width: 200px;
+        margin-top: 15px;
+        border-radius: 15px;
+    }
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+    <h1 id="question">Hello Fiance 💕</h1>
+    <p id="text">I have something important to ask you...</p>
+    <button id="yesBtn" onclick="next()">Yes 😍</button>
+    <button id="noBtn">No 🙄</button>
+</div>
+
+<audio id="music" loop>
+    <source src="palagi.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let step = 0;
+
+const questions = [
+    "Do you know how much I love you? 🥺💖",
+    "Will you promise to be my forever date? 😘",
+    "So… will you be my Valentine? 💘🌹"
+];
+
+function next() {
+    if (step < questions.length) {
+        document.getElementById("question").innerText = questions[step];
+        document.getElementById("text").innerText = "";
+        step++;
+    } else {
+        document.getElementById("card").innerHTML = `
+            <h1>YAY!! 💖💖💖</h1>
+            <p>You just made me the happiest person in the world 🥰</p>
+           
+        `;
+        document.getElementById("music").play();
+    }
+}
+
+// Teasing No button
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.top = Math.random() * 80 + "%";
+    noBtn.style.left = Math.random() * 80 + "%";
+});
+</script>
+
+</body>
+</html>
